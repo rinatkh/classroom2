@@ -33,12 +33,6 @@ func Example() string {
 	fmt.Fprintln(&out, "sizeof bool:", unsafe.Sizeof(flag))   // 1
 	fmt.Fprintln(&out, "sizeof rune:", unsafe.Sizeof(letter)) // 4, rune == int32
 
-	// Практика: выведите число 64 в десятичном, двоичном и шестнадцатеричном виде.
-	// Ожидаемый вывод: dec=64 bin=1000000 hex=40
-	//
-	// Ответ:
-	// x := 64
-	// fmt.Printf("dec=%d bin=%b hex=%x\n", x, x, x)
 	x := 64
 	fmt.Fprintf(&out, "dec=%d bin=%b hex=%x\n", x, x, x)
 

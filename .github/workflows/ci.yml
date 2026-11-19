@@ -26,6 +26,7 @@ jobs:
         with:
           go-version-file: go.mod
           cache: true
+          cache-dependency-path: go.mod
       - name: Download and verify modules
         run: make deps-check
       - name: Check go.mod and go.sum
@@ -42,6 +43,7 @@ jobs:
         with:
           go-version-file: go.mod
           cache: true
+          cache-dependency-path: go.mod
       - name: Check gofmt
         run: make fmt-check
 
@@ -56,6 +58,7 @@ jobs:
         with:
           go-version-file: go.mod
           cache: true
+          cache-dependency-path: go.mod
       - name: Run go vet
         run: make vet
 
@@ -70,6 +73,7 @@ jobs:
         with:
           go-version-file: go.mod
           cache: true
+          cache-dependency-path: go.mod
       - name: Run unit tests
         run: make test-unit
 
@@ -84,6 +88,7 @@ jobs:
         with:
           go-version-file: go.mod
           cache: true
+          cache-dependency-path: go.mod
       - name: Run integration tests
         run: make test-integration
 
@@ -98,6 +103,7 @@ jobs:
         with:
           go-version-file: go.mod
           cache: true
+          cache-dependency-path: go.mod
       - name: Run race tests
         run: make test-race
 
@@ -112,6 +118,7 @@ jobs:
         with:
           go-version-file: go.mod
           cache: true
+          cache-dependency-path: go.mod
       - name: Check coverage threshold
         run: make coverage-check
       - name: Upload coverage artifact
@@ -132,6 +139,7 @@ jobs:
         with:
           go-version-file: go.mod
           cache: true
+          cache-dependency-path: go.mod
       - name: Build all examples
         run: make build
 
@@ -156,6 +164,7 @@ jobs:
         with:
           go-version-file: go.mod
           cache: true
+          cache-dependency-path: go.mod
       - name: Package all binaries
         run: make package
       - name: Upload package artifact

@@ -9,7 +9,7 @@ func TestExample(t *testing.T) {
 		"atoi: 42 <nil>\n" +
 		"itoa: 42\n" +
 		"result: 130\n" +
-		"parse error: <nil>\n"
+		"parse error: <nil>\ninvalid input: abc\n"
 
 	if got := Example(); got != want {
 		t.Fatalf("Example() = %q, want %q", got, want)

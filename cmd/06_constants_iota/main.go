@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/rinatsm/go-course/classroom2/internal/constantsiota"
+	"github.com/rinatkh/classroom2/internal/constantsiota"
 )
 
 func main() {

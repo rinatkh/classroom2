@@ -8,7 +8,7 @@ import (
 func Example() string {
 	var out strings.Builder
 
-	// int — обычный целочисленный тип. На современных 64-bit системах чаще всего 64 бита.
+	// int имеет ширину 32 или 64 бита в зависимости от целевой архитектуры.
 	var users int = 125
 	fmt.Fprintln(&out, "users:", users)
 
@@ -29,13 +29,6 @@ func Example() string {
 	fmt.Fprintln(&out, "a/b:", a/b)     // 3, потому что оба числа int
 	fmt.Fprintln(&out, "a mod b:", a%b) // 2, остаток от деления
 
-	// Практика: есть price=1200 и discount=150. Посчитайте итоговую цену.
-	// Ожидаемый вывод: final price: 1050
-	//
-	// Ответ:
-	// price := 1200
-	// discount := 150
-	// fmt.Println("final price:", price-discount)
 	price := 1200
 	discount := 150
 	fmt.Fprintln(&out, "final price:", price-discount)

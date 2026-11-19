@@ -26,10 +26,10 @@ func Example() string {
 
 	// 5. += и ++
 	points := 10
-	points += 5
+	points += 5                             // points = points + 5
 	fmt.Fprintln(&out, "after +=:", points) // 15
 
-	points++
+	points++                                // points = points + 1 , points += 1
 	fmt.Fprintln(&out, "after ++:", points) // 16
 
 	// В Go нет ++points и нет --points. Только points++ / points-- отдельной строкой.
@@ -46,14 +46,6 @@ func Example() string {
 	width, depth := 30, 5
 	fmt.Fprintln(&out, "box:", width, height, depth) // 30 25 5
 
-	// Практика: создайте переменные name, age, city и выведите строку:
-	// profile: Maria 25 Berlin
-	//
-	// Ответ:
-	// name := "Maria"
-	// age := 25
-	// city := "Berlin"
-	// fmt.Println("profile:", name, age, city)
 	name := "Maria"
 	age := 25
 	city := "Berlin"

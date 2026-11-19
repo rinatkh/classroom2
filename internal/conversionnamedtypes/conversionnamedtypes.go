@@ -29,24 +29,27 @@ func Example() string {
 
 	// strconv для преобразований string <-> number.
 	n, err := strconv.Atoi("42")
-	fmt.Fprintln(&out, "atoi:", n, err) // 42 <nil>
+	if err != nil {
+		fmt.Fprintln(&out, "error:", n, err) // 0 error
+	} else {
+		fmt.Fprintln(&out, "atoi:", n, err) // 42 <nil>
+		str := strconv.Itoa(n)
+		fmt.Fprintln(&out, "itoa:", str) // "42"
+	}
 
-	str := strconv.Itoa(42)
-	fmt.Fprintln(&out, "itoa:", str) // "42"
-
-	// Практика: преобразуйте строку "125" в int, прибавьте 5 и выведите результат.
-	// Ожидаемый вывод: result: 130
-	//
-	// Ответ:
-	// value, err := strconv.Atoi("125")
-	// if err != nil {
-	//     fmt.Println("error:", err)
-	//     return
-	// }
-	// fmt.Println("result:", value+5)
 	value, parseErr := strconv.Atoi("125")
-	fmt.Fprintln(&out, "result:", value+5)
+	if parseErr != nil {
+		fmt.Fprintln(&out, "error:", value, parseErr) // 0 error
+	} else {
+		fmt.Fprintln(&out, "result:", value+5)
+	}
 	fmt.Fprintln(&out, "parse error:", parseErr)
+
+	// При ошибке не используем результат парсинга в дальнейших вычислениях.
+	_, invalidErr := strconv.Atoi("abc")
+	if invalidErr != nil {
+		fmt.Fprintln(&out, "invalid input:", "abc")
+	}
 
 	return out.String()
 }

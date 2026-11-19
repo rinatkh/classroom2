@@ -149,7 +149,9 @@ build-pointers:
 	@mkdir -p $(BIN_DIR)
 	$(GO) build -o $(BIN_DIR)/08_pointers ./cmd/08_pointers
 
-package: clean build
+package:
+	$(MAKE) clean
+	$(MAKE) build GOOS=linux GOARCH=amd64
 	tar -czf $(PACKAGE_FILE) -C $(BIN_DIR) \
 		01_declaration \
 		02_numbers \
@@ -167,8 +169,7 @@ deps-check:
 mod-check:
 	$(GO) mod tidy
 	@if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then \
-		git diff --exit-code -- go.mod; \
-		if [ -f go.sum ]; then git diff --exit-code -- go.sum; fi; \
+		git diff --exit-code -- go.mod go.sum; \
 	else \
 		echo "Skipping git diff because this directory is not a git repository"; \
 	fi
@@ -189,7 +190,7 @@ coverage:
 	$(GO) tool cover -func=$(COVERAGE_FILE)
 
 coverage-check: coverage
-	@coverage="$$(go tool cover -func=$(COVERAGE_FILE) | awk '/^total:/ {gsub("%", "", $$3); print $$3}')"; \
+	@coverage="$$( $(GO) tool cover -func=$(COVERAGE_FILE) | awk '/^total:/ {gsub("%", "", $$3); print $$3}')"; \
 	awk -v coverage="$$coverage" -v threshold="$(COVERAGE_THRESHOLD)" 'BEGIN { \
 		if (coverage + 0 < threshold + 0) { \
 			printf "coverage %.1f%% is below threshold %.1f%%\n", coverage, threshold; \

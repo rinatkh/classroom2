@@ -14,16 +14,17 @@ func Example() string {
 	fmt.Fprintln(&out, "before:", value) // 10
 
 	// Через *pointer можно изменить исходное значение.
-	(*pointer)++
-	fmt.Fprintln(&out, "after pointer change:", value) // 11
+	*pointer = 20
+	fmt.Fprintln(&out, "after pointer change:", value) // 20
 
 	// new(T) создает значение типа T и возвращает указатель на него.
-	created := new(int)
+	created := new(int) // Ненулевой *int указывает на нулевое int-значение.
 	*created = 42
 	fmt.Fprintln(&out, "created with new:", *created) // 42
 
 	// nil pointer — указатель, который никуда не указывает.
-	var missing *int
+	var missing *int // nil
+	// *missing = 42 // Намеренно отключено: разыменование nil вызывает panic.
 	fmt.Fprintln(&out, "nil pointer:", missing == nil) // true
 
 	// Перед разыменованием указателя обычно нужно проверить его на nil.

@@ -1,3 +1,3 @@
-module github.com/rinatsm/go-course/classroom2
+module github.com/rinatkh/classroom2
 
-go 1.23
+go 1.22

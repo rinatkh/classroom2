@@ -34,15 +34,6 @@ func Example() string {
 	z := 2 + 3i
 	fmt.Fprintln(&out, "complex:", z)
 
-	// Практика: посчитайте среднюю оценку 4.5, 5.0, 3.5 и проверьте, что она >= 4.0.
-	// Ожидаемый вывод:
-	// average=4.33
-	// passed=true
-	//
-	// Ответ:
-	// avg := (4.5 + 5.0 + 3.5) / 3
-	// fmt.Printf("average=%.2f\n", avg)
-	// fmt.Println("passed=", avg >= 4.0)
 	avg := (4.5 + 5.0 + 3.5) / 3
 	fmt.Fprintf(&out, "average=%.2f\n", avg)
 	fmt.Fprintln(&out, "passed:", avg >= 4.0)
